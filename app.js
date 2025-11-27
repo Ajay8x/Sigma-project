@@ -67,11 +67,11 @@ const sessionOptions = {
 
 
 
-// // Routes /
-// app.get('/', (req, res) => {
-//   res.render('home');
-//   console.log('🏠 Home page rendered successfully');
-// });
+// Routes /
+app.get('/', (req, res) => {
+  res.render('home');
+  console.log('🏠 Home page rendered successfully');
+});
 
 
 // Session Configuration
