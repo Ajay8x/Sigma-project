@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home - Travel & Explore</title>
+
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:"Segoe UI", Arial, sans-serif; }
+
+    :root {
+      --white:#000000;
+      --a1:#74ebd5; --a2:#acb6e5; --a3:#a18cd1;
+      --c1:#84fab0; --c2:#8fd3f4; --c3:#56ab2f;
+    }
+
+    body {
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+      background:linear-gradient(135deg,var(--a1),var(--a2),var(--a3));
+      color:var(--white);
+
+      /* ✅ Enable scroll */
+      overflow-y:auto;
+      overflow-x:hidden;
+
+      padding:40px 14px;
+    }
+
+    .stars {
+      position:fixed; inset:0; pointer-events:none; opacity:.6;
+      background-image:
+        radial-gradient(2px 2px at 10% 20%, rgba(255,255,255,.7) 50%, transparent),
+        radial-gradient(1.5px 1.5px at 30% 80%, rgba(255,255,255,.6) 50%, transparent),
+        radial-gradient(1.2px 1.2px at 60% 30%, rgba(255,255,255,.5) 50%, transparent),
+        radial-gradient(2px 2px at 80% 60%, rgba(255,255,255,.75) 50%, transparent),
+        radial-gradient(1.2px 1.2px at 90% 10%, rgba(255,255,255,.5) 50%, transparent);
+      animation: twinkle 6s ease-in-out infinite alternate;
+      z-index:-1;
+    }
+    @keyframes twinkle { 50% { transform:translateY(-8px); opacity:.9; } }
+
+    .scene { perspective:1200px; width:min(860px,92vw); margin-top:40px; }
+    .card {
+      background:rgba(255,255,255,.12);
+      padding:42px min(60px,6vw);
+      border-radius:18px;
+      backdrop-filter:blur(12px);
+      box-shadow:0 18px 40px rgba(0,0,0,.25);
+      transition:transform 200ms ease;
+      transform-style:preserve-3d;
+    }
+
+    .globe-wrap { display:grid; place-items:center; width:220px; height:220px; margin:0 auto 24px; }
+    .globe {
+      width:180px; height:180px; border-radius:50%;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,.45), transparent 45%),
+        radial-gradient(circle, #1f3b73, #0c1c3a 60%);
+      box-shadow:inset 0 -10px 40px rgba(0,0,0,.45), 0 12px 40px rgba(0,0,0,.3);
+      animation:float 5s ease-in-out infinite;
+      position:relative; overflow:hidden;
+    }
+    @keyframes float { 50% { transform:translateY(-8px); } }
+
+
+    .globe::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background: repeating-conic-gradient(
+    rgb(0, 0, 0) 0 8deg,
+    transparent 8deg 20deg
+  );
+  filter: drop-shadow(0 0 10px rgba(95, 38, 64, 0.7))
+          drop-shadow(0 0 20px rgba(27, 128, 118, 0.5));
+  mix-blend-mode: screen;
+  animation: spin 24s linear infinite;
+  opacity: 0.9;
+}
+
+.globe::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 40% 42%, rgba(80, 20, 255, 0.9) 0 16%, transparent 17%),
+    radial-gradient(ellipse at 65% 60%, rgba(230, 255, 60, 0.9) 0 14%, transparent 15%),
+    radial-gradient(ellipse at 55% 28%, rgba(255, 60, 60, 0.9) 0 11%, transparent 12%),
+    radial-gradient(ellipse at 28% 70%, rgba(40, 255, 160, 0.9) 0 13%, transparent 14%);
+  mix-blend-mode: screen;
+  opacity: 0.92;
+  filter: blur(0px) brightness(1.25);
+  animation: spin 4s linear infinite reverse, hueShift 5s ease-in-out infinite alternate;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes hueShift {
+  0%   { filter: hue-rotate(0deg) brightness(1.2); }
+  50%  { filter: hue-rotate(120deg) brightness(1.4); }
+  100% { filter: hue-rotate(240deg) brightness(1.2); }
+}
+
+
+    .chip { margin-top:10px; padding:6px 12px; border-radius:999px; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.3); }
+
+    h1 { font-size:clamp(2.2rem,4vw,3.2rem); margin-bottom:14px; }
+    p { margin-bottom:26px; line-height:1.7; }
+
+    .cta {
+      display:inline-block; background:#000; color:#fff;
+      padding:14px 28px; border-radius:6px; font-weight:700; text-decoration:none;
+      transform:translateZ(40px);
+      box-shadow:0 10px 22px rgba(0,0,0,.45);
+      transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+    }
+    .cta:hover {
+      background:#111;
+      transform:translateZ(60px) scale(1.07);
+      box-shadow:0 16px 30px rgba(0,0,0,.6);
+    }
+
+    .grid { margin-top:22px; display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); }
+    .card-mini {
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.25);
+      padding:16px; border-radius:16px;
+      transition:.2s ease; box-shadow:0 10px 24px rgba(0,0,0,.18);
+    }
+    .card-mini:hover { transform:translateY(-4px); box-shadow:0 16px 30px rgba(0,0,0,.26); }
+  </style>
+</head>
+
+<body>
+  <div class="stars"></div>
+
+  <div class="scene">
+    <main class="card">
+
+      <div class="globe-wrap">
+        <div class="globe"></div>
+        <div class="chip">🌍 Plan. Pack. Go!</div>
+      </div>
+
+      <h1>Travel & Explore the World</h1>
+      <p>Your gateway to discover breathtaking places, hidden gems, and unforgettable journeys.</p>
+
+      <a class="cta" href="/listings">Start Exploring</a>
+      <div style="margin-top:10px; opacity:.9; font-size:.85rem;">No sign-up needed to browse featured destinations.</div>
+
+      <section class="grid">
+        <article class="card-mini"><h3>Itinerary Builder</h3><p>Create day-by-day plans.</p></article>
+        <article class="card-mini"><h3>Smart Budgeting</h3><p>Track costs and estimates.</p></article>
+        <article class="card-mini"><h3>Hidden Gems</h3><p>Discover real travel spots.</p></article>
+        <article class="card-mini"><h3>Visa & Docs</h3><p>Country-wise checklists.</p></article>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    // 3D tilt stays the same
+    (function(){
+      const scene=document.querySelector('.scene');
+      const card=document.querySelector('.card');
+      let r;
+      function set(){ r=card.getBoundingClientRect(); }
+      set(); window.addEventListener('resize',set);
+
+      scene.onmousemove=e=>{
+        const x=(e.clientX-r.left)/r.width - .5;
+        const y=(e.clientY-r.top)/r.height - .5;
+        card.style.transform=`rotateX(${y*-12}deg) rotateY(${x*18}deg)`;
+      };
+      scene.onmouseleave=()=>card.style.transform='rotateX(0) rotateY(0)';
+    })();
+  </script>
+
+</body>
+</html>
