@@ -68,10 +68,11 @@ const sessionOptions = {
 
 
 // Routes /
-app.get('/', (req, res) => {
-  res.render('home');
-  console.log('🏠 Home page rendered successfully');
+app.get('', (req, res) => {
+  console.log('Redirecting to listings...');
+  res.redirect('/listings');
 });
+
 
 
 // Session Configuration
