@@ -11,6 +11,8 @@ const flash = require('connect-flash');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user.js');
+const adminRouter = require("./routes/admin");
+
 
 // Routes imports
 const listingsRouter = require('./routes/listing.js');
@@ -19,11 +21,11 @@ const userRouter = require('./routes/user.js');
 const { error } = require('console');
 
 
-// MongoDB connection
+// ATLASDB connection
 //const MONGO_URI = 'mongodb://localhost:27017/wanderlust';
 const dbUrl=process.env.ATLASDB_URL;
 main()
-  .then(() => console.log('✅ Connected to MongoDB'))
+  .then(() => console.log('✅ Connected to ATLAS DB'))
   .catch(err => console.log(err));
 
 async function main() {
@@ -140,6 +142,9 @@ app.use('/listings/:id/reviews', reviewsRouter);
 //user routes
 app.use('/', userRouter);
 
+
+// Admin routes
+app.use("/admin", adminRouter);
 
 
 

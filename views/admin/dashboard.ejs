@@ -1,0 +1,33 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-4">
+  <h2 class="mb-4">🛠 Admin Dashboard</h2>
+
+  <h4>All Listings</h4>
+  <ul class="list-group mb-4">
+    <% listings.forEach(l => { %>
+      <li class="list-group-item d-flex justify-content-between">
+        <%= l.title %>
+        <form method="POST" action="/admin/listings/<%= l._id %>?_method=DELETE">
+          <button class="btn btn-sm btn-danger">Delete</button>
+        </form>
+      </li>
+    <% }) %>
+  </ul>
+
+  <h4>All Users</h4>
+  <ul class="list-group">
+    <% users.forEach(u => { %>
+      <li class="list-group-item d-flex justify-content-between">
+        <%= u.username %>
+        <% if(!u.isAdmin){ %>
+          <form method="POST" action="/admin/users/<%= u._id %>?_method=DELETE">
+            <button class="btn btn-sm btn-danger">Delete</button>
+          </form>
+        <% } else { %>
+          <span class="badge bg-success">ADMIN</span>
+        <% } %>
+      </li>
+    <% }) %>
+  </ul>
+</div>

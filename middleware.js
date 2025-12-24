@@ -10,6 +10,8 @@ const { listingSchema,reviewSchema } = require('./schema.js');
 
 
 
+
+
   module.exports.isLoggedIn = (req, res, next) => {
     console.log(req.path,"...",req.originalUrl);
     if (!req.isAuthenticated()) {
@@ -82,4 +84,16 @@ module.exports.isReviewAuthor= async (req, res, next) => {
       return res.redirect(`/listings/${id}`);
   } 
       next();
+};
+
+
+
+
+
+module.exports.isAdmin = (req, res, next) => {
+  if (!req.isAuthenticated() || !req.user.isAdmin) {
+    req.flash("error", "Admin access only!");
+    return res.redirect("/admin/login");
+  }
+  next();
 };
