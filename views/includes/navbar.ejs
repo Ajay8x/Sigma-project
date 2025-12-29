@@ -37,20 +37,54 @@
 
 /* 📱 Mobile adjustments */
 @media (max-width: 768px) {
+
   .search-center {
-    position: static;
-    transform: none;
-    width: 100%;
+    position: static;          /* 🔥 IMPORTANT: absolute hatao */
+    transform: none;           /* 🔥 center transform reset */
+ 
+    display: flex;
+    justify-content: center;   /* center horizontally */
+    margin: 0.5rem 0;
+  }
+
+  .search-form {
     display: flex;
     justify-content: center;
-    margin: 0.4rem 0;
+    width: 100%;
   }
 
   .search-inp {
     width: 65%;
     max-width: 230px;
   }
+
+
+.nav-link {
+    justify-content: flex-end;
+    width: 100%;
+    text-align: right;
+  }
+
 }
+
+
+/* 📱 Mobile: hide Explore */
+@media (max-width: 767.98px) {
+  .Explore1 {
+    display: none !important;
+  }
+}
+
+/* 🖥 Desktop: hide Explore2 */
+@media (min-width: 768px) {
+  .Explore2 {
+    display: none !important;
+  }
+
+
+
+}
+
 
 </style>
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
@@ -60,7 +94,7 @@
     <a class="navbar-brand" href="/listings">
       <i class="fa-regular fa-compass"></i>
     </a>
-
+  <a class="nav-link Explore1" href="/listings">Explore</a>
     <!-- 🔍 SEARCH (NEVER COLLAPSE, ALWAYS CENTER) -->
     <div class="search-center">
       <form class="search-form" role="search" action="/listings" method="GET">
@@ -87,7 +121,7 @@
     <div class="collapse navbar-collapse" id="navbarLinks">
 
       <div class="navbar-nav ms-auto">
-        <a class="nav-link" href="/listings">Explore</a>
+        <a class="nav-link Explore2" href="/listings">Explore</a>
         <a class="nav-link" href="/listings/new">ADD NEW POST</a>
 
         <% if (!currUser) { %>
