@@ -1,154 +1,265 @@
+/* =======================
+   GLOBAL
+======================= */
+
+
+
 body {
   font-family: 'Plus Jakarta Sans', sans-serif !important;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: #fafafa;
 }
 
-.container{
+.container {
   flex: 1;
 }
 
-/*navbar*/
-.navbar {
-    min-height: 5rem;
-    background-color: white;
-    flex-wrap: wrap;
+
+
+
+
+
+
+
+
+/* =======================
+   PAGE LOADER
+======================= */
+
+#page-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Spinner */
+.loader {
+  width: 42px;
+  height: 42px;
+  border: 4px solid #e0e0e0;
+  border-top: 4px solid rgb(255, 0, 0);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Hide loader */
+#page-loader.hide {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease;
 }
 
 
 
 
+
+
+
+
+
+
+
+
+/* =======================
+   NAVBAR
+======================= */
+
+.navbar {
+  min-height: 5rem;
+  background-color: #fff;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
 .fa-compass {
-    color: rgb(255, 0, 0);
-    font-size: 2rem;
+  color: rgb(255, 0, 0);
+  font-size: 2rem;
 }
 
 .nav-link {
-    color: #222222 !important;
+  color: #222 !important;
+  font-weight: 500;
 }
 
-
-
-.f-info-links a {
-    text-decoration: none;
-    color: #222222;
-    margin: 1rem;
+.nav-link:hover {
+  color: rgb(255, 0, 0) !important;
 }
 
+/* =======================
+   FOOTER
+======================= */
 
-
-.f-info-links a:hover {
-    text-decoration: underline;
-    margin: 1rem;
-
+.f-info {
+  text-align: center;
+  display: flex;
+  min-height: 8rem;
+  background-color: rgb(150, 158, 155);
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .f-info-links,
- .f-info-socials,
- .f-info-brand {
-    width: 100%;
-    vertical-align: middle;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.f-info-socials,
+.f-info-brand {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
-
-.f-info-socials i {
-    margin: 1rem;
-    font-size: 1.2rem;
-
-}
-
-
 
 .f-info-links a {
-    text-decoration: none;
-    color: #222222;
+  text-decoration: none;
+  color: #222;
+  margin: 0.5rem 1rem;
+  transition: color 0.2s ease;
 }
 
-
-
-
-.f-info {
-    text-align: center;
-    display: flex;
-    height: 8rem;
-    background-color: rgb(150, 158, 155);
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: space-evenly;
+.f-info-links a:hover {
+  text-decoration: underline;
+  color: rgb(255, 0, 0);
 }
 
+.f-info-socials i {
+  margin: 0.75rem;
+  font-size: 1.2rem;
+}
 
-
-/* cards */
+/* =======================
+   CARDS
+======================= */
 
 .listing-card {
   border: none !important;
   margin-bottom: 2rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.listing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
 }
 
 .card-img-top {
   border-radius: 1rem !important;
   width: 100% !important;
+  height: 250px;
   object-fit: cover !important;
 }
 
 .card-body {
-  padding: 0.5rem 0; 
+  padding: 0.5rem 0;
 }
 
 .card-text {
-  font-weight: 400; 
-  font-size: 1rem;  
+  font-weight: 500;
+  font-size: 1rem;
 }
 
-.listing-link{
-    text-decoration: none;
+.listing-link {
+  text-decoration: none;
+  color: inherit;
 }
 
-/*  card effects */
+/* =======================
+   IMAGE OVERLAY
+======================= */
 
-
-
-.card-img-overlay{
-  opacity: 0.1;
-  background-color: rgb(11, 10, 10);
-  box-shadow: 1 3 18px rgba(0, 0, 0, 0.4); /* shadow */
+.card-img-overlay {
+  opacity: 0.15;
+  background-color: rgba(0,0,0,0.6);
+  transition: opacity 0.25s ease;
 }
 
-.card-img-overlay:hover  {
+.card-img-overlay:hover {
   opacity: 0;
-  transition: all 0.1s ease;
 }
 
-/* new page */
+/* =======================
+   BUTTONS
+======================= */
 
-.add-btn{
-  background-color: chartreuse !important; 
+.add-btn {
+  background-color: chartreuse !important;
   border: none !important;
-
+  color: #000;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Edit page */
+.add-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
 
-
-.edit-btn{
-  background-color: rgb(215, 46, 164) !important; 
+.edit-btn {
+  background-color: rgb(215, 46, 164) !important;
   border: none !important;
-
+  color: #fff;
+  font-weight: 600;
 }
 
-/* Show page */
+.edit-btn:hover {
+  opacity: 0.9;
+}
 
-.show-img{
+/* =======================
+   SHOW PAGE IMAGE
+======================= */
+
+.show-img {
   height: 50vh;
-
+  transition: transform 0.3s ease;
 }
 
-.show-img:hover{
-  height: 55vh;
+.show-img:hover {
+  transform: scale(1.05);
+}
 
+/* =======================
+   ACCESSIBILITY
+======================= */
+
+a:focus,
+button:focus {
+  outline: 2px solid rgb(255, 0, 0);
+  outline-offset: 2px;
+}
+
+/* =======================
+   MOBILE IMPROVEMENTS
+======================= */
+
+@media (max-width: 768px) {
+  .navbar {
+    min-height: auto;
+  }
+
+  .card-img-top {
+    height: 220px;
+  }
+
+  .show-img {
+    height: 40vh;
+  }
+
+  .listing-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
 }

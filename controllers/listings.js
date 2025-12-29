@@ -5,24 +5,67 @@ const Listing = require("../models/listing");
 
 
 
-
-// INDEX — Show all listings
+// INDEX — Show all listings with optional search
 module.exports.index = async (req, res, next) => {
   try {
-    const allListings = await Listing.find({});
+    const { q } = req.query;
+    let listings = [];
 
-    console.log("✅ All listings page rendered successfully");
+    if (q && q.trim() !== "") {
+      listings = await Listing.find({
+        $or: [
+          { title: { $regex: q, $options: "i" } },
+          { location: { $regex: q, $options: "i" } },
+          { country: { $regex: q, $options: "i" } }
+        ]
+      });
+    } else {
+      listings = await Listing.find({});
+    }
 
-    return res.render("listings/index.ejs", {
+    console.log("✅ Listings page rendered successfully");
+
+    res.render("listings/index.ejs", {
       layout: "layouts/boilerplate",
-      listings: allListings || []
+      listings,
+      q: q || ""
     });
 
   } catch (error) {
     console.error("❌ Error fetching listings:", error);
-    next(error);  // 👈 Correct way to pass error to Express handler
+    next(error); // Express error handler
   }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // INDEX — Show all listings
+// module.exports.index = async (req, res, next) => {
+//   try {
+//     const allListings = await Listing.find({});
+
+//     console.log("✅ All listings page rendered successfully");
+
+//     return res.render("listings/index.ejs", {
+//       layout: "layouts/boilerplate",
+//       listings: allListings || []
+//     });
+
+//   } catch (error) {
+//     console.error("❌ Error fetching listings:", error);
+//     next(error);  // 👈 Correct way to pass error to Express handler
+//   }
+// };
 
 
 

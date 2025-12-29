@@ -1,91 +1,115 @@
 <style>
-  .search-btn{
-    background-color: rgb(255, 0, 0);
-    color: white;
-    border-radius: 20px;
-    padding: 0 1rem;
+/* SEARCH CENTER (never collapses) */
+.search-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+}
+
+/* Input */
+.search-inp {
+  border-radius: 14px;
+  padding: 0.2rem 1.4rem;
+  font-size: 0.8rem;
+  border: 1px solid #ddd;
+}
+
+.search-inp:focus {
+  border-color: rgb(255, 0, 0);
+  box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.15);
+}
+
+/* Button */
+.search-btn {
+  background-color: rgb(255, 0, 0);
+  color: #fff;
+  border-radius: 14px;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.8rem;
+  border: none;
+  margin-left: 0.3rem;
+}
+
+/* 📱 Mobile adjustments */
+@media (max-width: 768px) {
+  .search-center {
+    position: static;
+    transform: none;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0.4rem 0;
   }
-  .search-btn:hover{
-    background-color: rgb(255, 0, 0);
-    color: white;
+
+  .search-inp {
+    width: 65%;
+    max-width: 230px;
   }
-  .search-inp{
-    border-radius:25px ;
-    padding: 0.25rem 3rem;
-  }
+}
+
 </style>
-
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
-  <div class="container-fluid">
+  <div class="container-fluid align-items-center">
 
-    <!-- LOGO -->
+    <!-- LEFT: LOGO -->
     <a class="navbar-brand" href="/listings">
       <i class="fa-regular fa-compass"></i>
     </a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-      data-bs-target="#navbarNavAltMarkup">
+    <!-- 🔍 SEARCH (NEVER COLLAPSE, ALWAYS CENTER) -->
+    <div class="search-center">
+      <form class="search-form" role="search" action="/listings" method="GET">
+        <input
+          class="form-control search-inp"
+          type="search"
+          name="q"
+          placeholder="Search"
+          value="<%= typeof q !== 'undefined' ? q : '' %>"
+        />
+        <button class="search-btn" type="submit">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
+    </div>
+
+    <!-- TOGGLER (ONLY FOR LINKS) -->
+    <button class="navbar-toggler ms-auto" type="button"
+      data-bs-toggle="collapse" data-bs-target="#navbarLinks">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <!-- COLLAPSE: LINKS ONLY -->
+    <div class="collapse navbar-collapse" id="navbarLinks">
 
-      <!-- LEFT LINKS -->
-      <div class="navbar-nav">
-        <a class="nav-link" href="/listings">Explore</a>
-      </div>
-
-      <!-- SEARCH -->
-      <div class="navbar-nav mx-auto">
-        <form class="d-flex" role="search">
-          <input class="form-control me-2 search-inp"
-            type="search" placeholder="Search destinations" />
-          <button class="btn search-btn" type="submit">
-            <i class="fa-solid fa-magnifying-glass"></i> Search
-          </button>
-        </form>
-      </div>
-
-      <!-- RIGHT LINKS -->
       <div class="navbar-nav ms-auto">
-
+        <a class="nav-link" href="/listings">Explore</a>
         <a class="nav-link" href="/listings/new">ADD NEW POST</a>
 
         <% if (!currUser) { %>
-          <!-- NORMAL USER -->
           <a class="nav-link" href="/signup"><b>Sign Up</b></a>
           <a class="nav-link" href="/login"><b>Log In</b></a>
-
-          <!-- ADMIN LOGIN -->
-          <a class="nav-link text-danger" href="/admin/login">
-            <b>Admin</b>
-          </a>
-
+          <a class="nav-link text-danger" href="/admin/login"><b>Admin</b></a>
         <% } else { %>
-
           <span class="nav-link disabled">
             Hello, <%= currUser.username %>
           </span>
 
           <% if (currUser.isAdmin) { %>
-            <!-- ADMIN PANEL -->
-            <a class="nav-link text-danger fw-bold"
-               href="/admin/dashboard">
+            <a class="nav-link text-danger fw-bold" href="/admin/dashboard">
               Admin Panel
             </a>
-            <a class="nav-link" href="/admin/logout">
-              Admin Logout
-            </a>
+            <a class="nav-link" href="/admin/logout">Admin Logout</a>
           <% } else { %>
-            <!-- NORMAL USER LOGOUT -->
-            <a class="nav-link" href="/logout">
-              <b>Log Out</b>
-            </a>
+            <a class="nav-link" href="/logout"><b>Log Out</b></a>
           <% } %>
-
         <% } %>
-
       </div>
+
     </div>
   </div>
 </nav>

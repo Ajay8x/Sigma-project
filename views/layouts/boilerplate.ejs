@@ -18,15 +18,32 @@
 
        <link href="/css/rating.css"  rel="stylesheet"/> 
 </head>
-<body>
+
+
+
+
+
+<body> 
 
     <%- include("../includes/navbar.ejs") %>
 
     <div class="container mt-4">
     
          <%- include("../includes/flash.ejs") %>
+         
+         
+         <!-- 🔄 PAGE LOADER -->
+  <div id="page-loader">
+    <div class="loader"></div>
+  </div>
         <%- body %>
     </div>
+
+
+
+
+
+
 
     <%- include("../includes/footer.ejs") %>
 

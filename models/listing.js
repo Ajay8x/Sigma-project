@@ -9,16 +9,6 @@ const listingSchema = new Schema({
   },
   description: String,
 
-  // image: {
-  //   type: String,
-  //   default:
-  //     "https://images.unsplash.com/photo-1586375300773-8384e3e4916f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60",
-  //   set: (v) =>
-  //     v === ""
-  //       ? "https://images.unsplash.com/photo-1586375300773-8384e3e4916f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60"
-  //       : v,
-  // },
-
 
     image: {
     url: String,
