@@ -1,0 +1,61 @@
+File Tree: MAJORPROJECT
+
+────────────────────────────────────────────────────────────────────────────────
+
+├── 📁 controllers/
+│   ├── 📄 listings.js
+│   ├── 📄 reviews.js
+│   └── 📄 users.js
+├── 📁 init/
+│   ├── 📄 admin.js
+│   ├── 📄 data.js
+│   └── 📄 index.js
+├── 📁 models/
+│   ├── 📄 listing.js
+│   ├── 📄 review.js
+│   └── 📄 user.js
+├── 📁 public/
+│   ├── 📁 css/
+│   │   ├── 🎨 rating.css
+│   │   └── 🎨 style.css
+│   ├── 📁 js/
+│   │   └── 📄 script.js
+│   └── 📄 favicon.ico
+├── 📁 routes/
+│   ├── 📄 admin.js
+│   ├── 📄 listing.js
+│   ├── 📄 review.js
+│   └── 📄 user.js
+├── 📁 utils/
+│   ├── 📄 ExpressError.js
+│   └── 📄 wrapAsync.js
+├── 📁 views/
+│   ├── 📁 admin/
+│   │   ├── 📄 dashboard.ejs
+│   │   └── 📄 login.ejs
+│   ├── 📁 includes/
+│   │   ├── 📄 flash.ejs
+│   │   ├── 📄 footer.ejs
+│   │   └── 📄 navbar.ejs
+│   ├── 📁 layouts/
+│   │   └── 📄 boilerplate.ejs
+│   ├── 📁 listings/
+│   │   ├── 📄 edit.ejs
+│   │   ├── 📄 index.ejs
+│   │   ├── 📄 new.ejs
+│   │   └── 📄 show.ejs
+│   ├── 📁 users/
+│   │   ├── 📄 login.ejs
+│   │   └── 📄 signup.ejs
+│   ├── 📄 error.ejs
+│   └── 📄 home.ejs
+├── ⚙️ .gitignore
+├── 📄 app.js
+├── 📄 cloudConfig.js
+├── 📄 middleware.js
+├── ⚙️ nodemon.json
+├── 📄 note.txt
+├── ⚙️ package-lock.json
+├── ⚙️ package.json
+└── 📄 schema.js
+

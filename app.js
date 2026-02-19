@@ -59,7 +59,7 @@ const sessionOptions = {
   store,
   secret: process.env.SECRET,
   resave: false,
-  saveUninitialized: false,   // 🔥 MUST BE FALSE
+  saveUninitialized: false,   // MUST BE FALSE
   cookie: {
     httpOnly: true,
     maxAge: 1000 * 60 * 60 * 24 * 7,
@@ -125,14 +125,6 @@ app.get('/demouser', async (req, res) => {
 
 
 
-
-
-
-
-
-
-
-
 //use route 
 
 // Listings routes
@@ -160,7 +152,7 @@ app.use((err, req, res, next) => {
   const { statusCode = 500 } = err;
   if (!err.message) err.message = 'Something went wrong!';
 
-  // ✅ Set correct status
+
   res.status(statusCode);
 
   // For JSON requests (like Postman/Hoppscotch)
