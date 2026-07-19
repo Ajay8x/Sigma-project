@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
-const { isAdmin } = require("../middleware");
+const { isAdmin } = require("../expressMiddleware");
 
 const User = require("../models/user");
 const Listing = require("../models/listing");
