@@ -1,5 +1,3 @@
-live link https://traveling-rental-platform-8x.vercel.app/
-
 # 🌍 Traveling Rental Platform
 
 A full-stack travel rental web application where users can explore, create, edit, and manage travel listings with secure authentication, image uploads, and reviews. This project is inspired by platforms like Airbnb and is built using Node.js, Express.js, MongoDB, and Cloudinary.
